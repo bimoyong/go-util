@@ -4,7 +4,7 @@ import (
 	"github.com/micro/go-micro/v2/config/reader"
 	log "github.com/micro/go-micro/v2/logger"
 
-	"gitlab.com/bimoyong/go-util/database"
+	"github.com/bimoyong/go-util/database"
 )
 
 var (

@@ -1,3 +1,3 @@
-module gitlab.com/bimoyong/go-util/file
+module github.com/bimoyong/go-util/file
 
 go 1.14

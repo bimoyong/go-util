@@ -1,4 +1,4 @@
-module gitlab.com/bimoyong/go-util/database
+module github.com/bimoyong/go-util/database
 
 go 1.14
 

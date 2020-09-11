@@ -10,8 +10,8 @@ import (
 	"github.com/micro/go-micro/v2/config/source/file"
 	log "github.com/micro/go-micro/v2/logger"
 
-	clog "gitlab.com/bimoyong/go-util/config/log"
-	"gitlab.com/bimoyong/go-util/str"
+	clog "github.com/bimoyong/go-util/config/log"
+	"github.com/bimoyong/go-util/str"
 )
 
 // Config struct

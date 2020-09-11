@@ -1,4 +1,4 @@
-module gitlab.com/bimoyong/go-util/logger
+module github.com/bimoyong/go-util/logger
 
 go 1.14
 

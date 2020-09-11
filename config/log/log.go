@@ -4,8 +4,8 @@ import (
 	"github.com/micro/go-micro/v2/config/reader"
 	log "github.com/micro/go-micro/v2/logger"
 
-	"gitlab.com/bimoyong/go-plugins/logger/zap/v2"
-	"gitlab.com/bimoyong/go-util/logger"
+	"github.com/bimoyong/go-plugins/logger/zap/v2"
+	"github.com/bimoyong/go-util/logger"
 )
 
 // Refresh defines how to deal with configuration change
