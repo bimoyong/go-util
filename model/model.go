@@ -1,7 +1,6 @@
 package model
 
 import (
-	"errors"
 	"fmt"
 	"strings"
 )
@@ -9,56 +8,58 @@ import (
 type (
 	// Header struct
 	Header struct {
-		ID              string `json:"id,omitempty" mapstructure:"id,omitempty"`
-		Alias           string `json:"alias,omitempty" mapstructure:"alias,omitempty"`
-		Resource        string `json:"resource,omitempty" mapstructure:"resource,omitempty"`
-		Domain          string `json:"domain,omitempty" mapstructure:"domain,omitempty"`
-		PostbackChannel string `json:"postback_channel,omitempty" mapstructure:"postback_channel,omitempty"`
+		ID       string `json:"id,omitempty" mapstructure:"id,omitempty"`
+		Alias    string `json:"alias,omitempty" mapstructure:"alias,omitempty"`
+		Resource string `json:"resource,omitempty" mapstructure:"resource,omitempty"`
+		Domain   string `json:"domain,omitempty" mapstructure:"domain,omitempty"`
+		Postback string `json:"postback,omitempty" mapstructure:"postback,omitempty"`
 	}
 )
 
-// PopPostbackChannel function
-func (h *Header) PopPostbackChannel() string {
-	t := h.PostbackChannel
-	h.PostbackChannel = ""
+// PopPostback function
+func (h *Header) PopPostback() string {
+	t := h.Postback
+	h.Postback = ""
 
 	return t
 }
 
 // ParseServerName function
-func ParseServerName(serverName string) (*Header, error) {
-	srvName := serverName
-	parts := strings.Split(srvName, ".")
+func ParseServerName(serverName string) (h *Header, err error) {
+	parts := strings.Split(serverName, ".")
 	if 1 >= len(parts) {
-		return nil, errors.New(fmt.Sprintf("[%s] is compliant to server name pattern: [{NAMESPACE}.{TYPE}.{ALIAS}-{DOMAIN}]", srvName))
+		err = fmt.Errorf("[%s] is compliant to server name pattern: [{NAMESPACE}.{TYPE}.{ALIAS}-{DOMAIN}]", serverName)
+		return
 	}
 
 	ad := parts[2]
 
 	sepIndex := strings.IndexByte(ad, '-')
-	var h *Header
 	if 0 > sepIndex {
 		h = &Header{
 			Alias: ad,
 		}
-	} else {
-		h = &Header{
-			Alias:  ad[:sepIndex],
-			Domain: ad[sepIndex+1:],
-		}
+
+		return
 	}
 
-	return h, nil
+	h = &Header{
+		Alias:  ad[:sepIndex],
+		Domain: ad[sepIndex+1:],
+	}
+
+	return
 }
 
-func (s *Header) String() string {
-	str := s.Alias
-	if 0 < len(s.Domain) {
-		str += "-" + s.Domain
+// String function
+func (h *Header) String() (str string) {
+	str = h.Alias
+	if 0 < len(h.Domain) {
+		str += "-" + h.Domain
 	}
-	if 0 < len(s.Resource) {
-		str += "." + s.Resource
+	if 0 < len(h.Resource) {
+		str += "." + h.Resource
 	}
 
-	return str
+	return
 }
