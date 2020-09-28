@@ -6,6 +6,7 @@ import (
 
 // NewMetadata function
 func NewMetadata(md metadata.Metadata) (rst metadata.Metadata) {
+	rst = make(metadata.Metadata)
 	var keys = []string{"ID", "Alias", "Resource", "Domain", "Postback"}
 	for _, k := range keys {
 		if v, ok := md.Get(k); ok {
