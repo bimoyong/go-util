@@ -1,4 +1,4 @@
-package model
+package metadata
 
 import (
 	"github.com/micro/go-micro/v2/metadata"

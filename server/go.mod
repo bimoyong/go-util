@@ -1,4 +1,4 @@
-module github.com/bimoyong/go-util/metadata
+module github.com/bimoyong/go-util/server
 
 go 1.14
 
