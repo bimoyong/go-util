@@ -33,8 +33,8 @@ func AuthWrapper(fn server.SubscriberFunc) server.SubscriberFunc {
 		// TODO: inspect authorization with timeout
 		md, _ := metadata.FromContext(ctx)
 		ctx = metadata.NewContext(context.Background(), umetadata.NewMetadata(md))
+		tk, _ := md.Get("Authorization")
 		if rsp, err = srv.Inspect(ctx, &req); err != nil {
-			tk, _ := md.Get("Authorization")
 			log.Warnf("Bad credential: authz=[%s]", tk)
 
 			return
