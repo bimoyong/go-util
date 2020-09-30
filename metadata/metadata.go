@@ -15,6 +15,7 @@ func NewMetadata(md metadata.Metadata) (rst metadata.Metadata) {
 		"ID",
 		"Postback",
 		"Resource",
+		"Timestamp",
 	}
 
 	for _, k := range keys {
