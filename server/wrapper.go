@@ -9,9 +9,9 @@ import (
 	"github.com/micro/go-micro/v2/metadata"
 	"github.com/micro/go-micro/v2/server"
 
+	"github.com/bimoyong/go-user/auth"
+	puser "github.com/bimoyong/go-user/proto/user"
 	umetadata "github.com/bimoyong/go-util/metadata"
-	"gitlab.com/bimoyong/go-user/auth"
-	puser "gitlab.com/bimoyong/go-user/proto/user"
 )
 
 // LogWrapper function
